@@ -69,3 +69,45 @@ def test_corrected_demo_validates_against_shipped_schema(tmp_path):
     )
     jsonschema.Draft202012Validator.check_schema(schema)
     jsonschema.validate(demo(), schema)
+
+
+def test_verify_seoul_matches_all_fields_and_rejects_changed_bias(tmp_path, capsys):
+    from importlib.resources import files
+
+    source = files("medextract_lab_bench").joinpath(
+        "protocols", "vitaldb-hemoglobin-results.json"
+    )
+    output = tmp_path / "seoul.json"
+    score = read_json(source)
+    assert (score["primary"]["paired"], score["primary"]["eligible"]) == (55, 226)
+    output.write_text(json.dumps(score))
+    args = [
+        "verify",
+        "--task",
+        "vitaldb_hemoglobin_day90_v1",
+        "--scorecard",
+        str(output),
+    ]
+    assert main(args) == 0
+    assert (
+        json.loads(capsys.readouterr().out)["verification"]
+        == "matched_external_scorecard"
+    )
+    score["primary"]["methods"]["model"]["metrics"]["bias"] = 0
+    output.write_text(json.dumps(score))
+    assert main(args) == 1
+    assert "bias" in capsys.readouterr().err
+
+
+def test_boston_demo_cli_uses_invented_events(tmp_path):
+    pytest.importorskip("duckdb")
+    output = tmp_path / "invented.json"
+    args = ["run", "--task", "synthetic-boston", "--out", str(output)]
+    assert main(args) == 0
+    receipt = read_json(output)
+    assert receipt["release"] == "invented"
+    assert (receipt["scorecard"]["eligible"], receipt["scorecard"]["paired"]) == (3, 2)
+    assert receipt["scorecard"]["methods"]["last"]["metrics"]["mae"] == pytest.approx(
+        1.5
+    )
+    assert main(args) != 0

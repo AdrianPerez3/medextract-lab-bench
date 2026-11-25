@@ -41,3 +41,4 @@ dist/
 !/src/medextract_lab_bench/protocols/cbc-results.json
 !/src/medextract_lab_bench/protocols/methods-v1.json
 !/src/medextract_lab_bench/protocols/scorecard.schema.json
+!/src/medextract_lab_bench/protocols/vitaldb-hemoglobin-results.json

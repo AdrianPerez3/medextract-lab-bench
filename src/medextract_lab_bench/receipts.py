@@ -11,6 +11,7 @@ GOLDENS = {
     "bariatric_hba1c_9m_12m_v0": "bariatric-results.json",
     "lippe_hemoglobin_day90_v0": "cbc-results.json",
 }
+SITE_GOLDENS = {"vitaldb_hemoglobin_day90_v1": "vitaldb-hemoglobin-results.json"}
 
 
 def reject_constant(text):
@@ -75,6 +76,13 @@ def compare_golden(expected, actual, location="$", tolerance=1e-9):
 
 
 def verify_replay(task, actual):
-    golden = files("medextract_lab_bench").joinpath("protocols", GOLDENS[task])
+    is_site = task in SITE_GOLDENS
+    filename = SITE_GOLDENS[task] if is_site else GOLDENS[task]
+    golden = files("medextract_lab_bench").joinpath("protocols", filename)
     compare_golden(read_json(golden), actual)
-    return {"task": task, "verification": "matched_complete_historical_receipt"}
+    status = (
+        "matched_external_scorecard"
+        if is_site
+        else "matched_complete_historical_receipt"
+    )
+    return {"task": task, "verification": status}

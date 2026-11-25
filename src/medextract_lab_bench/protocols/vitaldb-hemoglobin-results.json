@@ -1,0 +1,314 @@
+{
+  "source": "Seoul National University Hospital, VitalDB 1.0.0",
+  "source_sha256": {
+    "clinical_data.csv": "7d6edb471e5eee3fde75e417084240c97bdbf6eff41cbd61e5dace44f1585ecf",
+    "lab_data.csv": "c6e84fb397afe8182a7e6cc3aac6b34502d6ac0fadf1abf0ef643cc8bd50ea8b",
+    "clinical_parameters.csv": "3fd13678a26629df5f1352c2a3fa2951e731d3760b8fa47c06c9ac3fbcef2e35",
+    "lab_parameters.csv": "0d937b50a19aa9c5105d8f477d4e5b3f3ef2f767f04badc76f2c3ecaa88056a6",
+    "LICENSE.txt": "9a78e7f22742dde9f66ae235ec793ba2212019dc4d0ced75c4da09ced0b35fb2"
+  },
+  "fit_sha256": "7dfc1270ecf6165910e3fe6189c17a869ee1d5cc49d1baf119dab4ea138671ac",
+  "unit": "g/dL",
+  "cases": 6388,
+  "subjects": 6090,
+  "selected_without_anestart": 0,
+  "hb_row_flow": {
+    "selected_hb_rows": 38962,
+    "unusable_time_or_value": 0,
+    "outside_extract": 0
+  },
+  "primary": {
+    "eligible": 226,
+    "paired": 55,
+    "observed_fraction": 0.24336283185840707,
+    "methods": {
+      "model": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.4327782930266375,
+          "median_ae": 1.4956388409188612,
+          "p90_ae": 2.815778064515529,
+          "rmse": 1.7493143391161776,
+          "bias": 0.5419346345086408,
+          "overpredicted_count": 36,
+          "overpredicted_fraction": 0.6545454545454545,
+          "mean_overprediction_when_high": 1.5084612640894488
+        }
+      },
+      "last": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.6863636363636363,
+          "median_ae": 1.4000000000000004,
+          "p90_ae": 3.52,
+          "rmse": 2.072163998423782,
+          "bias": 0.16454545454545447,
+          "overpredicted_count": 29,
+          "overpredicted_fraction": 0.5272727272727272,
+          "mean_overprediction_when_high": 1.7551724137931037
+        }
+      },
+      "span_rule": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.6863636363636363,
+          "median_ae": 1.4000000000000004,
+          "p90_ae": 3.52,
+          "rmse": 2.072163998423782,
+          "bias": 0.16454545454545447,
+          "overpredicted_count": 29,
+          "overpredicted_fraction": 0.5272727272727272,
+          "mean_overprediction_when_high": 1.7551724137931037
+        }
+      }
+    },
+    "model_minus": {
+      "last": {
+        "delta_mae": -0.2535853433369991,
+        "ci95": [
+          -0.43925652323897124,
+          -0.0685508057096326
+        ]
+      },
+      "span_rule": {
+        "delta_mae": -0.2535853433369991,
+        "ci95": [
+          -0.43925652323897124,
+          -0.0685508057096326
+        ]
+      }
+    }
+  },
+  "administrative_groups": {
+    "complete": {
+      "eligible": 226,
+      "paired": 55,
+      "observed_fraction": 0.24336283185840707,
+      "methods": {
+        "model": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.4327782930266375,
+            "median_ae": 1.4956388409188612,
+            "p90_ae": 2.815778064515529,
+            "rmse": 1.7493143391161776,
+            "bias": 0.5419346345086408,
+            "overpredicted_count": 36,
+            "overpredicted_fraction": 0.6545454545454545,
+            "mean_overprediction_when_high": 1.5084612640894488
+          }
+        },
+        "last": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.6863636363636363,
+            "median_ae": 1.4000000000000004,
+            "p90_ae": 3.52,
+            "rmse": 2.072163998423782,
+            "bias": 0.16454545454545447,
+            "overpredicted_count": 29,
+            "overpredicted_fraction": 0.5272727272727272,
+            "mean_overprediction_when_high": 1.7551724137931037
+          }
+        },
+        "span_rule": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.6863636363636363,
+            "median_ae": 1.4000000000000004,
+            "p90_ae": 3.52,
+            "rmse": 2.072163998423782,
+            "bias": 0.16454545454545447,
+            "overpredicted_count": 29,
+            "overpredicted_fraction": 0.5272727272727272,
+            "mean_overprediction_when_high": 1.7551724137931037
+          }
+        }
+      },
+      "model_minus": {
+        "last": {
+          "delta_mae": -0.2535853433369991,
+          "ci95": [
+            -0.43925652323897124,
+            -0.0685508057096326
+          ]
+        },
+        "span_rule": {
+          "delta_mae": -0.2535853433369991,
+          "ci95": [
+            -0.43925652323897124,
+            -0.0685508057096326
+          ]
+        }
+      }
+    },
+    "partial": {
+      "eligible": 2568,
+      "paired": 67,
+      "observed_fraction": 0.026090342679127725,
+      "methods": {
+        "model": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.496401467222515,
+            "median_ae": 1.3415483005903912,
+            "p90_ae": 2.9895072875577937,
+            "rmse": 1.9410459742738821,
+            "bias": 0.2064500113825102,
+            "overpredicted_count": 38,
+            "overpredicted_fraction": 0.5671641791044776,
+            "mean_overprediction_when_high": 1.5011980140333776
+          }
+        },
+        "last": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.855223880597015,
+            "median_ae": 1.549999999999999,
+            "p90_ae": 3.44,
+            "rmse": 2.3205281179655324,
+            "bias": -0.3104477611940299,
+            "overpredicted_count": 27,
+            "overpredicted_fraction": 0.40298507462686567,
+            "mean_overprediction_when_high": 1.9166666666666663
+          }
+        },
+        "span_rule": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": {
+            "mae": 1.855223880597015,
+            "median_ae": 1.549999999999999,
+            "p90_ae": 3.44,
+            "rmse": 2.3205281179655324,
+            "bias": -0.3104477611940299,
+            "overpredicted_count": 27,
+            "overpredicted_fraction": 0.40298507462686567,
+            "mean_overprediction_when_high": 1.9166666666666663
+          }
+        }
+      },
+      "model_minus": {
+        "last": {
+          "delta_mae": -0.35882241337450005,
+          "ci95": [
+            -0.5214158370839197,
+            -0.19252731997238984
+          ]
+        },
+        "span_rule": {
+          "delta_mae": -0.35882241337450005,
+          "ci95": [
+            -0.5214158370839197,
+            -0.19252731997238984
+          ]
+        }
+      }
+    },
+    "unobservable": {
+      "eligible": 166,
+      "paired": 0,
+      "observed_fraction": 0.0,
+      "methods": {
+        "model": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": null
+        },
+        "last": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": null
+        },
+        "span_rule": {
+          "nonfinite": 0,
+          "negative": 0,
+          "metrics": null
+        }
+      },
+      "model_minus": {
+        "last": {
+          "delta_mae": null,
+          "ci95": null
+        },
+        "span_rule": {
+          "delta_mae": null,
+          "ci95": null
+        }
+      }
+    }
+  },
+  "secondary_all_origins": {
+    "eligible": 2960,
+    "paired": 122,
+    "observed_fraction": 0.04121621621621622,
+    "methods": {
+      "model": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.4677188886915864,
+          "median_ae": 1.4615356621402409,
+          "p90_ae": 2.9756436929955608,
+          "rmse": 1.8570616684046637,
+          "bias": 0.35769307918527404,
+          "overpredicted_count": 74,
+          "overpredicted_fraction": 0.6065573770491803,
+          "mean_overprediction_when_high": 1.5047314870336284
+        }
+      },
+      "last": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.779098360655738,
+          "median_ae": 1.5,
+          "p90_ae": 3.4900000000000007,
+          "rmse": 2.21201543735164,
+          "bias": -0.09631147540983609,
+          "overpredicted_count": 56,
+          "overpredicted_fraction": 0.45901639344262296,
+          "mean_overprediction_when_high": 1.8330357142857143
+        }
+      },
+      "span_rule": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.779098360655738,
+          "median_ae": 1.5,
+          "p90_ae": 3.4900000000000007,
+          "rmse": 2.21201543735164,
+          "bias": -0.09631147540983609,
+          "overpredicted_count": 56,
+          "overpredicted_fraction": 0.45901639344262296,
+          "mean_overprediction_when_high": 1.8330357142857143
+        }
+      }
+    },
+    "model_minus": {
+      "last": {
+        "delta_mae": -0.31137947196415133,
+        "ci95": [
+          -0.43504117632011713,
+          -0.18734768661551093
+        ]
+      },
+      "span_rule": {
+        "delta_mae": -0.31137947196415133,
+        "ci95": [
+          -0.43504117632011713,
+          -0.18734768661551093
+        ]
+      }
+    }
+  }
+}
