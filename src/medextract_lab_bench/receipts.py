@@ -11,7 +11,10 @@ GOLDENS = {
     "bariatric_hba1c_9m_12m_v0": "bariatric-results.json",
     "lippe_hemoglobin_day90_v0": "cbc-results.json",
 }
-SITE_GOLDENS = {"vitaldb_hemoglobin_day90_v1": "vitaldb-hemoglobin-results.json"}
+SITE_GOLDENS = {
+    "vitaldb_hemoglobin_day90_v1": "vitaldb-hemoglobin-results.json",
+    "sao_paulo_hemoglobin_day90_v1": "sao-paulo-hemoglobin-results.json",
+}
 
 
 def reject_constant(text):

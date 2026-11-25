@@ -39,9 +39,11 @@ Carrying the last result forward beat the damped trend on both development tasks
 
 The hospital errors describe the 11.9% who had a result in the target window. The two studies also use different clocks. The HbA1c data give scheduled visits, and the hospital data give shifted draw dates. Exact result-availability times are unknown. [Data sources, selection rules and timing](docs/data.md)
 
-## Does the hemoglobin forecast work at a second hospital?
+## How did the frozen hemoglobin forecast perform at other hospitals?
 
 A separate model learned an adjustment to the latest hemoglobin result from 3,273 people with follow-up at Klinikum Lippe in Germany. The package includes the frozen fit and a replay on VitalDB from Seoul National University Hospital. Of 226 surgical patients with four prior draws and a fully observable follow-up window, 55 had a measured outcome. On those 55, mean absolute error was **1.433 g/dL** for the model and **1.686 g/dL** for the latest measured value. The paired 95% interval for the reduction was 0.069–0.439 g/dL. The model also overpredicted by **0.542 g/dL** on average, and its median absolute error rose from 1.400 to 1.496 g/dL. Follow-up was selective and clinical benefit remains unknown. [Reproduce the Seoul results](docs/vitaldb-results.md)
+
+At Hospital Israelita Albert Einstein in São Paulo, **700 of 3,944** eligible people had a measured follow-up. On those 700, the same model reduced mean absolute error from **1.368 to 1.308 g/dL**, a paired improvement of **0.061 g/dL** (95% bootstrap interval 0.015–0.108). Median absolute error rose from 1.000 to 1.092 g/dL. The model predicted 0.215 g/dL too low on average. [São Paulo results, source and replay commands](docs/sao-paulo-results.md)
 
 The Boston workflow counts eligible patients before scoring the same frozen model in an authorized MIMIC-IV 3.1 environment. To try the full calculation on invented data, install the optional dependency with `python -m pip install '.[boston]'`, then run `lab-bench run --task synthetic-boston`. The public MIMIC-IV demo supports a separate counts-only rehearsal. [Boston commands, cohort and reporting rules](docs/boston-validation.md)
 
@@ -72,5 +74,6 @@ For the hospital task, use `TASK=lippe_hemoglobin_day90_v0`, point `INPUT` to `K
 - Jo Ann Galvan published the Malaysian bariatric surgery dataset in Harvard Dataverse under CC0 1.0. [Bariatric surgery dataset](https://doi.org/10.7910/DVN/T9OBE3)
 - Barış Gün Sürmeli and colleagues published the Klinikum Lippe *Pseudonymized Complete Blood Count Test Data* on Zenodo under CC BY 4.0. [Blood count dataset](https://doi.org/10.5281/zenodo.15674541)
 - Hyung-Chul Lee and Chul-Woo Jung published VitalDB v1.0.0 on PhysioNet under CC BY 4.0. The Seoul scorecard uses daily medians and aggregate forecast errors derived from this release. [VitalDB dataset](https://doi.org/10.13026/czw8-9p62)
+- This work used data obtained from the COVID-19 Data Sharing/BR, available at https://repositoriodatasharingfapesp.uspdigital.usp.br/. FAPESP (2020). The São Paulo comparison uses hospital item 98. [Hospital source record](https://repositoriodatasharingfapesp.uspdigital.usp.br/handle/item/98)
 - Cite the software and the dataset used. The code is MIT-licensed. [Software citation](CITATION.cff) · [License](LICENSE)
 - To run the tests or propose a change, see the [contributing guide](CONTRIBUTING.md).

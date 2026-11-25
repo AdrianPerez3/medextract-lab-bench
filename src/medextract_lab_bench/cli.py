@@ -59,6 +59,10 @@ def _parser():
             part.add_argument("--events", required=True, type=Path)
             part.add_argument("--dictionary", required=True, type=Path)
     for name, help_text in (
+        (
+            "replay-sao-paulo",
+            "evaluate the frozen hemoglobin model on the original FAPESP hospital archive",
+        ),
         ("replay-seoul", "evaluate the frozen hemoglobin model on VitalDB 1.0.0"),
         (
             "qualify-boston-demo",
@@ -68,13 +72,21 @@ def _parser():
         ("score-boston", "score the frozen hemoglobin model on full MIMIC-IV 3.1"),
     ):
         part = sub.add_parser(name, help=help_text, description=help_text)
-        part.add_argument(
-            "--root", required=True, type=Path, help="local dataset directory"
-        )
+        if name == "replay-sao-paulo":
+            part.add_argument(
+                "--archive",
+                required=True,
+                type=Path,
+                help="original EINSTEINAgosto.zip from FAPESP item 98",
+            )
+        else:
+            part.add_argument(
+                "--root", required=True, type=Path, help="local dataset directory"
+            )
         part.add_argument(
             "--out", type=Path, help="write once to a new file (default stdout)"
         )
-        if name != "replay-seoul":
+        if name in ("qualify-boston-demo", "qualify-boston", "score-boston"):
             part.add_argument(
                 "--scratch",
                 required=True,
@@ -108,6 +120,7 @@ def _execute(args):
             "historical_tasks": list(GOLDENS),
             "site_commands": [
                 "replay-seoul",
+                "replay-sao-paulo",
                 "qualify-boston-demo",
                 "qualify-boston",
                 "score-boston",
@@ -125,6 +138,10 @@ def _execute(args):
 
         report = qualify_demo(args.events, args.dictionary, check_release=True)
         return {**report, "methods_lock_digest": match["digest"]}
+    if command == "replay-sao-paulo":
+        from .adapters import sao_paulo
+
+        return sao_paulo.run(args.archive)
     if command == "replay-seoul":
         from .adapters import vitaldb
 

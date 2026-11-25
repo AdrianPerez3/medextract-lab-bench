@@ -1,0 +1,172 @@
+{
+  "qualification": {
+    "archive_sha256": "6fe4a880a55daf90f27e688ed21cd7ab4480c3901d5b4f52fa3a3750ae5c9d29",
+    "source": "Hospital Israelita Albert Einstein, FAPESP COVID-19 Data Sharing/BR, item 98",
+    "collection_dates": [
+      "2019-11-01",
+      "2020-08-11"
+    ],
+    "roster": 79863,
+    "with_one_or_more_days": 22102,
+    "eligible": 3944,
+    "paired": 700,
+    "without_target": 3244,
+    "window_groups": {
+      "complete": {
+        "eligible": 1599,
+        "paired": 638
+      },
+      "partial": {
+        "eligible": 583,
+        "paired": 62
+      },
+      "unobservable": {
+        "eligible": 1762,
+        "paired": 0
+      }
+    },
+    "row_flow": {
+      "all_exam_rows": 3415155,
+      "days_with_multiple_rows": 1133,
+      "excluded_unit": 2,
+      "excluded_value": 385,
+      "matched_before_unit": 79069,
+      "person_days": 77479,
+      "retained_rows": 78682
+    },
+    "source_settings_retained_rows": {
+      "HOSP": 78682
+    }
+  },
+  "model_sha256": "7dfc1270ecf6165910e3fe6189c17a869ee1d5cc49d1baf119dab4ea138671ac",
+  "all": {
+    "eligible": 3944,
+    "paired": 700,
+    "observed_fraction": 0.17748478701825557,
+    "methods": {
+      "model": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3077411292136427,
+          "median_ae": 1.0919972403122218,
+          "p90_ae": 2.7238933661408122,
+          "rmse": 1.6502275924991656,
+          "bias": -0.21508083349535623,
+          "overpredicted_count": 299,
+          "overpredicted_fraction": 0.42714285714285716,
+          "mean_overprediction_when_high": 1.2790337909745828
+        }
+      },
+      "last": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3684285714285715,
+          "median_ae": 1.0,
+          "p90_ae": 3.0999999999999996,
+          "rmse": 1.8223454275034843,
+          "bias": -0.2765714285714286,
+          "overpredicted_count": 301,
+          "overpredicted_fraction": 0.43,
+          "mean_overprediction_when_high": 1.2696013289036545
+        }
+      },
+      "span_rule": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3684285714285715,
+          "median_ae": 1.0,
+          "p90_ae": 3.0999999999999996,
+          "rmse": 1.8223454275034843,
+          "bias": -0.2765714285714286,
+          "overpredicted_count": 301,
+          "overpredicted_fraction": 0.43,
+          "mean_overprediction_when_high": 1.2696013289036545
+        }
+      }
+    },
+    "model_minus": {
+      "last": {
+        "delta_mae": -0.0606874422149288,
+        "ci95": [
+          -0.10811269402472878,
+          -0.015197770416755484
+        ]
+      },
+      "span_rule": {
+        "delta_mae": -0.0606874422149288,
+        "ci95": [
+          -0.10811269402472878,
+          -0.015197770416755484
+        ]
+      }
+    }
+  },
+  "complete": {
+    "eligible": 1599,
+    "paired": 638,
+    "observed_fraction": 0.3989993746091307,
+    "methods": {
+      "model": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3081630739193157,
+          "median_ae": 1.1018676750504834,
+          "p90_ae": 2.6924614803812075,
+          "rmse": 1.6486312861216346,
+          "bias": -0.2009485288446532,
+          "overpredicted_count": 274,
+          "overpredicted_fraction": 0.42946708463949845,
+          "mean_overprediction_when_high": 1.2890563499226912
+        }
+      },
+      "last": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3729623824451411,
+          "median_ae": 1.0,
+          "p90_ae": 3.0999999999999996,
+          "rmse": 1.8202524455462878,
+          "bias": -0.2706112852664577,
+          "overpredicted_count": 277,
+          "overpredicted_fraction": 0.4341692789968652,
+          "mean_overprediction_when_high": 1.269494584837545
+        }
+      },
+      "span_rule": {
+        "nonfinite": 0,
+        "negative": 0,
+        "metrics": {
+          "mae": 1.3729623824451411,
+          "median_ae": 1.0,
+          "p90_ae": 3.0999999999999996,
+          "rmse": 1.8202524455462878,
+          "bias": -0.2706112852664577,
+          "overpredicted_count": 277,
+          "overpredicted_fraction": 0.4341692789968652,
+          "mean_overprediction_when_high": 1.269494584837545
+        }
+      }
+    },
+    "model_minus": {
+      "last": {
+        "delta_mae": -0.06479930852582522,
+        "ci95": [
+          -0.1134945779854759,
+          -0.0177748270691525
+        ]
+      },
+      "span_rule": {
+        "delta_mae": -0.06479930852582522,
+        "ci95": [
+          -0.1134945779854759,
+          -0.0177748270691525
+        ]
+      }
+    }
+  }
+}

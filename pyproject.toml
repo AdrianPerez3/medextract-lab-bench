@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medextract-lab-bench"
-version = "0.2.0"
+version = "0.3.0"
 description = "Offline benchmark for forecasting measured hemoglobin and HbA1c from longitudinal laboratory results"
 readme = "README.md"
 requires-python = ">=3.11"

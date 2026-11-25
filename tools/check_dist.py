@@ -26,6 +26,7 @@ def allowed(relative, wheel):
                 "methods-v1.json",
                 "scorecard.schema.json",
                 "vitaldb-hemoglobin-results.json",
+                "sao-paulo-hemoglobin-results.json",
             }
         )
     if wheel and head.endswith(".dist-info"):
@@ -46,6 +47,8 @@ def allowed(relative, wheel):
             "docs/reproduction.md",
             "docs/vitaldb-results.md",
             "docs/boston-validation.md",
+            "docs/sao-paulo-results.md",
+            "docs/sao-paulo-protocol.md",
         }
     if head in {"tests", "tools"}:
         return path.suffix == ".py"
