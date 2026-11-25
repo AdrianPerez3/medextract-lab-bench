@@ -1,5 +1,21 @@
 # Reproducible runs and external cohorts
 
+## Rebuild the frozen 90-day hemoglobin model
+
+The six-feature model predicts a change from the last Hb using its level, two differences from earlier values, the variability of the four measurements, and the time spanned by the first-to-last and final two draws. Training used 3,273 German patients with measured outcomes. A deterministic patient split kept evaluation patients outside fitting and penalty selection. The included 19 numbers are aggregate feature means, scales, ridge coefficients and an intercept. All site evaluations use the same parameters.
+
+From the source checkout or extracted source distribution, install the package, set `LIPPE_WORKBOOK` to the original workbook and run the following command.
+
+```sh
+python tools/rebuild_hemoglobin_fit.py --workbook "$LIPPE_WORKBOOK"
+```
+
+The script verifies the workbook, repeats five-fold training-only penalty selection, and checks the fitted parameters against the reference within an absolute numerical tolerance of 1e-12. Use `--require-exact` to require identical binary64 parameter bytes. Numerical library differences can affect the last bits during refitting. The regular site commands use the supplied fit directly. [Original source and license](data.md) · [Fitting code](../tools/rebuild_hemoglobin_fit.py)
+
+Use `lab-bench replay-seoul` to reproduce the published aggregate results from the public VitalDB release. Use `lab-bench qualify-boston` to count eligible full-cohort patients before the scoring analysis. [Seoul instructions](vitaldb-results.md) · [Boston instructions](boston-validation.md)
+
+## Create a methods lock
+
 Use Python 3.11 and the hash-pinned runtime for the reference environment. Copy the source archive, the built wheel, the dependency lock and platform-appropriate dependency wheels to the evaluation environment. Keep provider data and temporary disk space in authorized locations.
 
 ```sh

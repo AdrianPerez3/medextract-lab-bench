@@ -7,7 +7,7 @@ A useful contribution makes a forecast easier to reproduce or a lab measurement 
 From a source checkout in a fresh virtual environment:
 
 ```sh
-python -m pip install '.[test]' build
+python -m pip install '.[test,boston]' build
 python -m pytest -q
 python -m build
 python tools/check_dist.py dist/*

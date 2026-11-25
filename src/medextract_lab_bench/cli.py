@@ -9,7 +9,7 @@ from zipfile import BadZipFile
 
 from . import __version__
 from .lock import make_lock, verify_lock
-from .receipts import GOLDENS, read_json, verify_replay, write_once
+from .receipts import GOLDENS, SITE_GOLDENS, read_json, verify_replay, write_once
 
 
 def _parser():
@@ -23,12 +23,14 @@ def _parser():
                 "replay": "reproduce the historical aggregate report",
                 "run": "score the corrected methods or run the synthetic demo",
                 "validate": "check an original development source against its release hash",
-                "verify": "compare a historical report with the shipped aggregate reference",
+                "verify": "compare a report with its shipped aggregate reference",
             }[name],
         )
         choices = list(GOLDENS)
+        if name == "verify":
+            choices += list(SITE_GOLDENS)
         if name == "run":
-            choices += ["synthetic-demo", "synthetic-events"]
+            choices += ["synthetic-demo", "synthetic-events", "synthetic-boston"]
         part.add_argument("--task", required=True, choices=choices)
         if name == "verify":
             part.add_argument("--scorecard", required=True, type=Path)
@@ -56,6 +58,42 @@ def _parser():
         if name == "qualify-demo":
             part.add_argument("--events", required=True, type=Path)
             part.add_argument("--dictionary", required=True, type=Path)
+    for name, help_text in (
+        ("replay-seoul", "evaluate the frozen hemoglobin model on VitalDB 1.0.0"),
+        (
+            "qualify-boston-demo",
+            "count eligible patients in the public MIMIC-IV 2.2 demo",
+        ),
+        ("qualify-boston", "count eligible patients in full MIMIC-IV 3.1"),
+        ("score-boston", "score the frozen hemoglobin model on full MIMIC-IV 3.1"),
+    ):
+        part = sub.add_parser(name, help=help_text, description=help_text)
+        part.add_argument(
+            "--root", required=True, type=Path, help="local dataset directory"
+        )
+        part.add_argument(
+            "--out", type=Path, help="write once to a new file (default stdout)"
+        )
+        if name != "replay-seoul":
+            part.add_argument(
+                "--scratch",
+                required=True,
+                type=Path,
+                help="local directory for temporary analysis files",
+            )
+        if name in ("qualify-boston", "score-boston"):
+            part.add_argument(
+                "--manifest",
+                required=True,
+                type=Path,
+                help="official 3.1 SHA256SUMS.txt",
+            )
+            part.add_argument(
+                "--demo-patients",
+                required=True,
+                type=Path,
+                help="public 2.2 demo patients.csv.gz for overlap exclusion",
+            )
     return parser
 
 
@@ -68,6 +106,12 @@ def _execute(args):
             "numpy": version("numpy"),
             "openpyxl": version("openpyxl"),
             "historical_tasks": list(GOLDENS),
+            "site_commands": [
+                "replay-seoul",
+                "qualify-boston-demo",
+                "qualify-boston",
+                "score-boston",
+            ],
         }
     if command == "verify":
         return verify_replay(args.task, read_json(args.scorecard))
@@ -81,9 +125,29 @@ def _execute(args):
 
         report = qualify_demo(args.events, args.dictionary, check_release=True)
         return {**report, "methods_lock_digest": match["digest"]}
+    if command == "replay-seoul":
+        from .adapters import vitaldb
+
+        return vitaldb.run(args.root)
+    if command in ("qualify-boston-demo", "qualify-boston", "score-boston"):
+        from .adapters import boston
+
+        if command == "qualify-boston-demo":
+            return boston.qualify_public_demo(args.root, args.scratch)
+        return boston.run(
+            args.root,
+            args.manifest,
+            args.demo_patients,
+            args.scratch,
+            counts_only=command == "qualify-boston",
+        )
     if args.task.startswith("synthetic-"):
         if args.input is not None:
             raise ValueError("synthetic tasks generate their inputs; remove --input")
+        if args.task == "synthetic-boston":
+            from .adapters.boston import synthetic
+
+            return synthetic()
         if args.task == "synthetic-events":
             from .events import synthetic_checks
 

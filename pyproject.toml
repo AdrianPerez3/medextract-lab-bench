@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "medextract-lab-bench"
-version = "0.1.2.post1"
+version = "0.2.0"
 description = "Offline benchmark for forecasting measured hemoglobin and HbA1c from longitudinal laboratory results"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -23,7 +23,11 @@ classifiers = [
 ]
 dependencies = ["numpy>=1.26,<3", "openpyxl>=3.1,<4"]
 
+[project.urls]
+Repository = "https://github.com/AdrianPerez3/medextract-lab-bench"
+
 [project.optional-dependencies]
+boston = ["duckdb==1.5.5"]
 test = ["pytest>=8,<10", "jsonschema>=4.18,<5", "setuptools>=77"]
 
 [project.scripts]
