@@ -1,0 +1,188 @@
+{
+  "version": "1",
+  "use": "research and reproducibility",
+  "development_replays": [
+    {
+      "task_id": "bariatric_hba1c_9m_12m_v0",
+      "source_doi": "10.7910/DVN/T9OBE3",
+      "raw_sha256": "ce595ea3de922e1bf4c68637100144b155e7baeac0baeab052c702702bcca1b6",
+      "quantity": "measured HbA1c",
+      "outcome_unit": "percentage points of reported HbA1c (%) for error; assay standardization unavailable",
+      "clock": "nominal visit grid only",
+      "history_days_including_index": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "target_day": 365,
+      "horizon_days": 95,
+      "index_rule": "protocol 9-month visit with all four named visits present",
+      "future_target_rule": "12-month scheduled observation; no substitution",
+      "people_in_source": 180,
+      "with_index_visit": 176,
+      "with_index_and_target_before_complete_history": 171,
+      "paired_people": 170,
+      "mae": {
+        "last": 0.2658823529411765,
+        "ses": 0.27551599128540305,
+        "robust_slope": 0.4220397603485839
+      },
+      "ses_minus_last_mae": 0.009633638344226567,
+      "ses_minus_last_ci95": [
+        -0.006548945533769112,
+        0.0259668387799564
+      ],
+      "golden_bootstrap": {
+        "unit": "person",
+        "replicates": 5000,
+        "seed_primary": 577,
+        "all_cases_seed_rule": "307 + index_day",
+        "interval": "linear percentile 2.5 and 97.5"
+      },
+      "eligible_people": 175,
+      "eligible_without_target": 5
+    },
+    {
+      "task_id": "lippe_hemoglobin_day90_v0",
+      "source_doi": "10.5281/zenodo.15674541",
+      "raw_workbook_sha256": "3f20282943ecaa7ce1936209ec9ad2273a0946da9b492dffc7f79b93f45ceef4",
+      "reference_cache_sha256": "7d64b8b1fcd7c21cb96f8ed30fa884675f0468d9fa046ae2d4f2669b90c12240",
+      "quantity": "measured blood hemoglobin",
+      "outcome_unit": "g/dL",
+      "clock": "released shifted draw dates; collection proxy",
+      "index_rule": "end of fourth distinct released draw day; within-person same-day median",
+      "index_count": 1,
+      "history_days_count": 4,
+      "horizon_days": 90,
+      "target_offset_days_inclusive": [
+        76,
+        104
+      ],
+      "target_tiebreak": "closest to 90, then earlier released day",
+      "source_records": 523844,
+      "source_people": 77355,
+      "source_person_days": 496680,
+      "eligible_people": 39687,
+      "paired_people": 4737,
+      "eligible_without_target": 34950,
+      "mae": {
+        "last": 1.2775596369009923,
+        "ses": 7.469826817469136,
+        "robust_slope": 8.835586924919173,
+        "history_median": 1.28484272746464,
+        "existing_span_gate_else_last": 1.2650849305511436
+      },
+      "negative_forecasts": {
+        "last": 0,
+        "ses": 649,
+        "robust_slope": 769,
+        "history_median": 0,
+        "existing_span_gate_else_last": 0
+      },
+      "ses_minus_last_mae": 6.192267180568143,
+      "ses_minus_last_ci95": [
+        5.71922110462667,
+        6.703719482788867
+      ],
+      "raw_span_route": {
+        "minimum_days_inclusive": 365,
+        "else": "last",
+        "routed_to_ses_paired_people": 803,
+        "postselection": "development-informed"
+      },
+      "golden_bootstrap": {
+        "unit": "person",
+        "replicates": 3000,
+        "seed_primary": 174,
+        "seed_ordered_strata_increment": 1,
+        "interval": "linear percentile 2.5 and 97.5"
+      }
+    }
+  ],
+  "numeric": {
+    "population": "One index per source-scoped person per task. Separate measured Hb and HbA1c tasks.",
+    "prediction_index": "inclusive as-of cutoff; future outcomes joined after forecasting",
+    "unsupported_time_basis": "label retrospective proxy or reject when true as-of is required",
+    "primary_comparator": "last eligible measured value",
+    "common_controls": [
+      "history median",
+      "raw SES with drift, alpha 0.4",
+      "raw Theil-Sen"
+    ],
+    "first_development_challenger": {
+      "id": "damped_span_slope_v1",
+      "slope": "median distinct-date pairwise slope per day",
+      "horizon": "h > 0",
+      "span": "s = last day minus first day",
+      "tau": "h",
+      "point_formula": "last + slope * h * (-expm1(-1)) * min(1, s / h)",
+      "single_distinct_day": "use last, mark fallback",
+      "finite_negative_output": "retain raw for diagnostic, flag invalid; any serving fallback needs a distinct version"
+    },
+    "hypothesis_scope": "separate estimates per cohort and analyte; external superiority not prespecified",
+    "primary_score": "mean of per-person differences in absolute error (candidate minus last) on common observed targets, with denominator and coverage",
+    "secondary": [
+      "MAE",
+      "median absolute error",
+      "RMSE",
+      "mean(predicted minus observed)",
+      "p90 absolute error",
+      "observed target fraction",
+      "prediction coverage",
+      "fallback and physically invalid output counts",
+      "calibration intercept and slope when estimable"
+    ],
+    "corrected_bootstrap_proposed": {
+      "replicates": 5000,
+      "seed": 2601,
+      "percentile": [
+        2.5,
+        97.5
+      ],
+      "unit": "patient",
+      "hold_methods_paired": true,
+      "rng": "NumPy Generator(PCG64); record exact version and subject ordering"
+    },
+    "event_endpoint": "first documented qualifying result after landmark in defined at-risk participants; use only where ascertainment and support are defensible",
+    "horizon_status": [
+      "positive",
+      "negative_through_horizon",
+      "unknown"
+    ],
+    "prediction_interval_coverages_proposed": [
+      0.8,
+      0.95
+    ],
+    "public_reports": "aggregate only; site-specific release rules and suppression assessed before export",
+    "interval_split": "One primary case per person. Disjoint deterministic per-person calibration and evaluation subsets; algorithm and sample counts recorded in each scorecard."
+  },
+  "development_decision": "Maintain persistence as reference. Retain raw and fallback counts. Advance a new model per task only if its development paired MAE improves on persistence without hiding failures. Report descriptive comparisons; no clinical superiority threshold defined.",
+  "historical_verification": {
+    "count_tolerance": 0,
+    "float_absolute_tolerance": 1e-09,
+    "ci_absolute_tolerance": 1e-08
+  },
+  "mimic_demo": {
+    "role": "optional schema and return-window feasibility in an overlapping 100-person subset; never a held-out hospital performance claim",
+    "version": "2.2",
+    "routine_hemoglobin_itemid": "51222",
+    "label": "Hemoglobin",
+    "fluid": "Blood",
+    "category": "Hematology",
+    "clock": "released chart date and store time; history available by end of fourth usable chart day",
+    "eligibility": "four distinct chart days with numeric routine hemoglobin available by that same day end",
+    "followup": "later chart day 76 through 104 inclusive with numeric result; duplicates reduce to presence for counts",
+    "target_values_exported": false,
+    "assay_unit": [
+      "g/dL",
+      "g/L"
+    ],
+    "encounter_scope": "all documented hospital laboratory events for this item including records without hadm_id; pre-transfusion exclusions unavailable in demo feasibility",
+    "future_full_mimic": "exclude every demo participant from future independent full-release test",
+    "release_checksums": {
+      "events": "d51a4cf1ea63245abe7d544b0d50a928e9ee2ec5eb9a5ce85500aed0bd6c6dfc",
+      "dictionary": "72ea5f020469fd24543bd98ab3bd0a4f645a5a4b7802d9d52af20d736f9d76db"
+    }
+  }
+}

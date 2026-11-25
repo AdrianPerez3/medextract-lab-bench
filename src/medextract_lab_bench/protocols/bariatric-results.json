@@ -1,0 +1,267 @@
+{
+  "doi": "10.7910/DVN/T9OBE3",
+  "sha256": "ce595ea3de922e1bf4c68637100144b155e7baeac0baeab052c702702bcca1b6",
+  "unit": "HbA1c percentage points",
+  "cohort_n": 180,
+  "long_records": 1561,
+  "primary": "270_to_365_with_preop",
+  "n_bootstrap_per_comparison": 5000,
+  "date_basis": "scheduled visit columns, without exact sample or availability timestamps",
+  "outcome": "later recorded HbA1c; paired frozen methods, no fit, one pair per person per comparison",
+  "comparisons": {
+    "0_to_90_with_preop": {
+      "n": 179,
+      "methods": {
+        "last": {
+          "mae": 0.49162011173184356,
+          "rmse": 0.5961702730037852,
+          "mean_signed_error": 0.4245810055865922,
+          "p90_absolute_error": 0.9000000000000004
+        },
+        "ses": {
+          "mae": 0.49162011173184356,
+          "rmse": 0.5961702730037852,
+          "mean_signed_error": 0.4245810055865922,
+          "p90_absolute_error": 0.9000000000000004
+        },
+        "robust_slope": {
+          "mae": 0.49162011173184356,
+          "rmse": 0.5961702730037852,
+          "mean_signed_error": 0.4245810055865922,
+          "p90_absolute_error": 0.9000000000000004
+        }
+      },
+      "ses_minus_last_mae": 0.0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "history_nominal_days": [
+        0
+      ],
+      "index_day": 0,
+      "target_day": 90,
+      "n_with_index": 179,
+      "n_with_index_and_target": 179
+    },
+    "90_to_180_with_preop": {
+      "n": 179,
+      "methods": {
+        "last": {
+          "mae": 0.5100558659217878,
+          "rmse": 0.6409228681401749,
+          "mean_signed_error": 0.4508379888268156,
+          "p90_absolute_error": 1.1200000000000019
+        },
+        "ses": {
+          "mae": 0.3701675977653632,
+          "rmse": 0.5041791824785041,
+          "mean_signed_error": 0.2810055865921788,
+          "p90_absolute_error": 0.9640000000000002
+        },
+        "robust_slope": {
+          "mae": 0.35698324022346367,
+          "rmse": 0.4822549454409303,
+          "mean_signed_error": 0.02625698324022347,
+          "p90_absolute_error": 0.7200000000000037
+        }
+      },
+      "ses_minus_last_mae": -0.13988826815642458,
+      "bootstrap95": [
+        -0.16536312849162005,
+        -0.11284916201117318
+      ],
+      "history_nominal_days": [
+        0,
+        90
+      ],
+      "index_day": 90,
+      "target_day": 180,
+      "n_with_index": 180,
+      "n_with_index_and_target": 180
+    },
+    "90_to_180_postop_only": {
+      "n": 180,
+      "methods": {
+        "last": {
+          "mae": 0.5127777777777778,
+          "rmse": 0.6434714877564938,
+          "mean_signed_error": 0.4538888888888889,
+          "p90_absolute_error": 1.1099999999999999
+        },
+        "ses": {
+          "mae": 0.5127777777777778,
+          "rmse": 0.6434714877564938,
+          "mean_signed_error": 0.4538888888888889,
+          "p90_absolute_error": 1.1099999999999999
+        },
+        "robust_slope": {
+          "mae": 0.5127777777777778,
+          "rmse": 0.6434714877564938,
+          "mean_signed_error": 0.4538888888888889,
+          "p90_absolute_error": 1.1099999999999999
+        }
+      },
+      "ses_minus_last_mae": 0.0,
+      "bootstrap95": [
+        0.0,
+        0.0
+      ],
+      "history_nominal_days": [
+        90
+      ],
+      "index_day": 90,
+      "target_day": 180,
+      "n_with_index": 180,
+      "n_with_index_and_target": 180
+    },
+    "180_to_270_with_preop": {
+      "n": 175,
+      "methods": {
+        "last": {
+          "mae": 0.2994285714285715,
+          "rmse": 0.37431842823228156,
+          "mean_signed_error": -0.0868571428571429,
+          "p90_absolute_error": 0.5
+        },
+        "ses": {
+          "mae": 0.29466285714285717,
+          "rmse": 0.3720704387996599,
+          "mean_signed_error": -0.10126857142857155,
+          "p90_absolute_error": 0.5440000000000002
+        },
+        "robust_slope": {
+          "mae": 0.6037142857142858,
+          "rmse": 0.7612114404965661,
+          "mean_signed_error": -0.5208571428571429,
+          "p90_absolute_error": 1.2299999999999993
+        }
+      },
+      "ses_minus_last_mae": -0.0047657142857142785,
+      "bootstrap95": [
+        -0.01392028571428572,
+        0.0041599999999999545
+      ],
+      "history_nominal_days": [
+        0,
+        90,
+        180
+      ],
+      "index_day": 180,
+      "target_day": 270,
+      "n_with_index": 180,
+      "n_with_index_and_target": 176
+    },
+    "180_to_270_postop_only": {
+      "n": 176,
+      "methods": {
+        "last": {
+          "mae": 0.2988636363636364,
+          "rmse": 0.3735578329328065,
+          "mean_signed_error": -0.08522727272727276,
+          "p90_absolute_error": 0.5
+        },
+        "ses": {
+          "mae": 0.3936363636363636,
+          "rmse": 0.516650048608604,
+          "mean_signed_error": -0.26500000000000007,
+          "p90_absolute_error": 0.77
+        },
+        "robust_slope": {
+          "mae": 0.6585227272727273,
+          "rmse": 0.838864221324394,
+          "mean_signed_error": -0.5346590909090909,
+          "p90_absolute_error": 1.2999999999999998
+        }
+      },
+      "ses_minus_last_mae": 0.09477272727272723,
+      "bootstrap95": [
+        0.06431818181818176,
+        0.12614204545454533
+      ],
+      "history_nominal_days": [
+        90,
+        180
+      ],
+      "index_day": 180,
+      "target_day": 270,
+      "n_with_index": 180,
+      "n_with_index_and_target": 176
+    },
+    "270_to_365_with_preop": {
+      "n": 170,
+      "methods": {
+        "last": {
+          "mae": 0.2658823529411765,
+          "rmse": 0.31021813956899275,
+          "mean_signed_error": 0.009411764705882392,
+          "p90_absolute_error": 0.5
+        },
+        "ses": {
+          "mae": 0.27551599128540305,
+          "rmse": 0.3309285627105757,
+          "mean_signed_error": -0.065437908496732,
+          "p90_absolute_error": 0.4975037037037041
+        },
+        "robust_slope": {
+          "mae": 0.4220397603485839,
+          "rmse": 0.5176723675373803,
+          "mean_signed_error": -0.29747549019607844,
+          "p90_absolute_error": 0.8292592592592589
+        }
+      },
+      "ses_minus_last_mae": 0.009633638344226567,
+      "bootstrap95": [
+        -0.006548945533769112,
+        0.0259668387799564
+      ],
+      "history_nominal_days": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "index_day": 270,
+      "target_day": 365,
+      "n_with_index": 176,
+      "n_with_index_and_target": 171
+    },
+    "270_to_365_postop_only": {
+      "n": 171,
+      "methods": {
+        "last": {
+          "mae": 0.26725146198830413,
+          "rmse": 0.31166408667662787,
+          "mean_signed_error": 0.012280701754386005,
+          "p90_absolute_error": 0.5
+        },
+        "ses": {
+          "mae": 0.268277452891488,
+          "rmse": 0.32358960557343974,
+          "mean_signed_error": -0.06846718648473041,
+          "p90_absolute_error": 0.48688888888888826
+        },
+        "robust_slope": {
+          "mae": 0.35791098115659514,
+          "rmse": 0.4475840919703045,
+          "mean_signed_error": -0.17815139701104613,
+          "p90_absolute_error": 0.6749999999999989
+        }
+      },
+      "ses_minus_last_mae": 0.0010259909031838496,
+      "bootstrap95": [
+        -0.014560656270305432,
+        0.017104288499025334
+      ],
+      "history_nominal_days": [
+        90,
+        180,
+        270
+      ],
+      "index_day": 270,
+      "target_day": 365,
+      "n_with_index": 176,
+      "n_with_index_and_target": 171
+    }
+  }
+}

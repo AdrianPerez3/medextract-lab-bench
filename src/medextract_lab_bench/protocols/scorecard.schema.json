@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MedExtract corrected point-forecast scorecard v1",
+  "type": "object",
+  "required": [
+    "scorecard_version",
+    "mode",
+    "task",
+    "status",
+    "methods",
+    "metrics",
+    "eligible_people",
+    "paired_people",
+    "eligible_without_target",
+    "clock",
+    "support",
+    "unit",
+    "horizon_days",
+    "benchmark_version",
+    "method_specification_sha256"
+  ],
+  "properties": {
+    "scorecard_version": {
+      "const": "1"
+    },
+    "mode": {
+      "const": "corrected"
+    },
+    "task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "supported",
+        "insufficient_support"
+      ]
+    },
+    "methods": {
+      "type": "object",
+      "required": [
+        "last",
+        "history_median",
+        "ses",
+        "robust_slope",
+        "existing_span_gate_else_last",
+        "damped_span_slope_v1"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "eligible",
+          "paired"
+        ],
+        "properties": {
+          "eligible": {
+            "type": "object",
+            "required": [
+              "denominator",
+              "predicted",
+              "valid_outputs",
+              "invalid_outputs",
+              "fallbacks",
+              "abstentions"
+            ],
+            "properties": {
+              "denominator": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "predicted": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "valid_outputs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "invalid_outputs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "fallbacks": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "abstentions": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          },
+          "paired": {
+            "type": "object",
+            "required": [
+              "denominator",
+              "predicted",
+              "valid_outputs",
+              "invalid_outputs",
+              "fallbacks",
+              "abstentions"
+            ],
+            "properties": {
+              "denominator": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "predicted": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "valid_outputs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "invalid_outputs": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "fallbacks": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "abstentions": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "last",
+        "history_median",
+        "ses",
+        "robust_slope",
+        "existing_span_gate_else_last",
+        "damped_span_slope_v1"
+      ],
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "n",
+          "mae",
+          "rmse",
+          "paired_n",
+          "paired_minus_last_mae",
+          "paired_minus_last_ci95"
+        ],
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "paired_n": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mae": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "rmse": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "paired_minus_last_mae": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "paired_minus_last_ci95": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "number"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "eligible_people": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "paired_people": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "eligible_without_target": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "clock": {
+      "type": "string"
+    },
+    "support": {
+      "type": "object"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "horizon_days": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "benchmark_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method_specification_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

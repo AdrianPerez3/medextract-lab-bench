@@ -1,0 +1,19 @@
+# Reproducible runs and external cohorts
+
+Use Python 3.11 and the hash-pinned runtime for the reference environment. Copy the source archive, the built wheel, the dependency lock and platform-appropriate dependency wheels to the evaluation environment. Keep provider data and temporary disk space in authorized locations.
+
+```sh
+python -m pip download --only-binary=:all: --require-hashes -r requirements/runtime.lock -d "$WHEELHOUSE"
+python -m pip install --no-index --find-links "$WHEELHOUSE" --require-hashes -r requirements/runtime.lock
+python -m pip install --no-index --no-deps "$BENCH_WHEEL"
+lab-bench lock --wheel "$BENCH_WHEEL" --dependencies requirements/runtime.lock --out methods-lock.json
+lab-bench verify-lock --wheel "$BENCH_WHEEL" --dependencies requirements/runtime.lock --lock methods-lock.json
+lab-bench qualify-demo --wheel "$BENCH_WHEEL" --dependencies requirements/runtime.lock --lock methods-lock.json \
+  --dictionary "$MIMIC_DEMO/hosp/d_labitems.csv.gz" --events "$MIMIC_DEMO/hosp/labevents.csv.gz" --out mimic-demo-counts.json
+```
+
+The local lock identifies the actual installed code and packaged methods, dependency lock, runtime versions, wheel bytes and local issue time. An independently held copy of its digest is needed to establish what preceded outcome access. For a formal external evaluation, retain the source snapshot, development receipts, independent review and an independently dated custodian-signed protocol. Build a task-specific assay mapping, chronology, population and disclosure policy before opening the data. A hash by itself cannot prove the custodian's authorization, the date, or the independence of participants.
+
+The public demo command requires the published fingerprints for both files. It matches the hematology dictionary item for routine blood hemoglobin and counts unique draw days, available-by-day-end histories and remeasurement in days 76–104. Its results describe the selected demo. It does not produce forecast accuracies or linked records. A care setting restricted to inpatient stays or a post-transfusion exclusion requires further inputs.
+
+For a new performance evaluation, select the primary comparator and hypothesis on development, enter versioned data terms, desired precision, unit scale, subgroup rules and error handling in the protocol, and qualify independence with the custodian. Run the first approved comparison once. Preserve its result, including a null or a losing method. Later model changes require fresh evaluation. A method that loses to persistence in development stops under this release's promotion policy. An external cohort can remain reserved for the next prospectively specified version.

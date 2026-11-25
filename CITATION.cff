@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+title: MedExtract Lab Bench
+message: "Cite this software version and the original dataset used in your experiment."
+type: software
+version: 0.1.2.post1
+authors:
+  - name: MedExtract
+abstract: >-
+  MedExtract Lab Bench is an offline Python benchmark for forecasting measured
+  hemoglobin and HbA1c from longitudinal laboratory results. It compares forecasts
+  with carrying the last measurement forward in two retrospective studies. The
+  scorecards report how many people had an observed target, forecast errors on
+  those people, and held-out prediction interval coverage.
+keywords:
+  - hemoglobin
+  - HbA1c
+  - laboratory results
+  - time series forecasting
+  - prediction intervals
+  - reproducible research
+license: MIT
+references:
+  - type: data
+    title: >-
+      Long-Term Clinical Outcomes and Cost-Effectiveness of Bariatric Surgery for
+      Type 2 Diabetes in Malaysia: A 10-Year Retrospective Cohort Study
+    authors:
+      - given-names: Jo Ann
+        family-names: Galvan
+    publisher:
+      name: Harvard Dataverse
+    year: 2026
+    version: "1.0"
+    doi: 10.7910/DVN/T9OBE3
+  - type: data
+    title: Pseudonymized Complete Blood Count Test Data
+    authors:
+      - given-names: Barış Gün
+        family-names: Sürmeli
+      - given-names: René
+        family-names: Staritzbichler
+      - given-names: Clemens Friedrich
+        family-names: Ringel
+      - given-names: Saleem
+        family-names: Al-Dakkak
+      - given-names: Helene
+        family-names: Dörksen
+      - given-names: Thorsten
+        family-names: Kaiser
+    publisher:
+      name: Zenodo
+    year: 2025
+    doi: 10.5281/zenodo.15674541

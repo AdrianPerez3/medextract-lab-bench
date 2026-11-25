@@ -1,0 +1,5 @@
+include LICENSE CITATION.cff CONTRIBUTING.md src/medextract_build.py
+include docs/data.md docs/measurement-events.md docs/reproduction.md
+recursive-include tests *.py
+recursive-include src/medextract_lab_bench/protocols *.json
+include requirements/runtime.lock requirements/constraints.txt tools/check_dist.py
