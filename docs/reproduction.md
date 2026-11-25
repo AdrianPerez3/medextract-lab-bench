@@ -12,7 +12,9 @@ python tools/rebuild_hemoglobin_fit.py --workbook "$LIPPE_WORKBOOK"
 
 The script verifies the workbook, repeats five-fold training-only penalty selection, and checks the fitted parameters against the reference within an absolute numerical tolerance of 1e-12. Use `--require-exact` to require identical binary64 parameter bytes. Numerical library differences can affect the last bits during refitting. The regular site commands use the supplied fit directly. [Original source and license](data.md) · [Fitting code](../tools/rebuild_hemoglobin_fit.py)
 
-Use `lab-bench replay-seoul` to reproduce the published aggregate results from the public VitalDB release. Use `lab-bench qualify-boston` to count eligible full-cohort patients before the scoring analysis. [Seoul instructions](vitaldb-results.md) · [Boston instructions](boston-validation.md)
+- `lab-bench replay-seoul` evaluates the frozen model on the VitalDB surgical cohort. [Seoul instructions](vitaldb-results.md)
+- `lab-bench replay-sao-paulo` streams the original FAPESP ZIP and reproduces the 700-person measured comparison. [São Paulo instructions and frozen protocol](sao-paulo-results.md)
+- `lab-bench qualify-boston` counts eligible full-cohort patients before scoring. [Boston instructions](boston-validation.md)
 
 ## Create a methods lock
 

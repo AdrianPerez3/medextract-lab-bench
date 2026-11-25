@@ -2,7 +2,7 @@ cff-version: 1.2.0
 title: MedExtract Lab Bench
 message: "Cite this software version and the original dataset used in your experiment."
 type: software
-version: 0.2.0
+version: 0.3.0
 authors:
   - name: MedExtract
 abstract: >-
@@ -10,7 +10,8 @@ abstract: >-
   hemoglobin and HbA1c from longitudinal laboratory results. It compares forecasts
   with carrying the last measurement forward. A frozen hemoglobin model from
   Klinikum Lippe was evaluated on surgical patients at Seoul National University
-  Hospital. Scorecards report follow-up, forecast error and signed bias.
+  Hospital and in a COVID-tested population at Hospital Israelita Albert Einstein
+  in São Paulo. Scorecards report follow-up, forecast error and signed bias.
 keywords:
   - hemoglobin
   - HbA1c
@@ -63,3 +64,10 @@ references:
     year: 2022
     version: "1.0.0"
     doi: 10.13026/czw8-9p62
+  - type: data
+    title: FAPESP COVID-19 Data Sharing/BR
+    authors:
+      - name: FAPESP
+    year: 2020
+    url: https://repositoriodatasharingfapesp.uspdigital.usp.br/
+    notes: Dados COVID Hospital Israelita Albert Einstein, item 98, EINSTEINAgosto.zip.
